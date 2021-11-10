@@ -21,10 +21,6 @@ const yieldValue = 50;
 
 const Account = () => {
   const [open, setOpen] = useState(false);
-  const toggleDrawer = () => {
-    console.log(open);
-    setOpen(!open);
-  };
 
   return (
     <div className="Account">

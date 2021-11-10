@@ -24,7 +24,7 @@ const price = [
   { x: 5, y: 2},
 ];
 
-const StockChart = () => {
+const StockChart = ({otherHistory}) => {
   return (
     <XYPlot width={300} height={300}>
       <VerticalGridLines />
@@ -35,6 +35,11 @@ const StockChart = () => {
         className="mark-series-example"
         sizeRange={[5, 15]}
         data={transactionHistory}
+      />
+      <MarkSeries
+        className="mark-series-example"
+        sizeRange={[5, 15]}
+        data={otherHistory}
       />
       <LineSeries className="first-series" data={price} />
     </XYPlot>
