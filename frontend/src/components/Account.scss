@@ -1,3 +1,13 @@
 .AccountInfo{
     padding:20px;
+    .AccountChart{
+        display: flex;
+        .fonts{
+padding:10% 0;
+text-align: center;
+            .fontWrap{
+                padding:10px;
+            }
+        }
+    }
 }

@@ -1,0 +1,12 @@
+.CommentButton{
+    display: flex;
+    position:relative;
+    margin:15px;
+
+    .MuiButton-root{
+        position:absolute;
+        right:3px;
+        top: 50%;
+    transform: translateY(-50%);
+    }
+}

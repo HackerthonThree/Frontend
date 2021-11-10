@@ -36,9 +36,17 @@ const Account = () => {
         }}
       />
       <div className="AccountInfo">
-        <Paper >
+        <Paper className="AccountChart">
           <div>{yieldValue}%</div>
           <AccountChart data={stocks} />
+          <div className="fonts">
+            <div className="fontWrap">
+            총 자산
+            </div>
+            <div className="fontWrap">
+            수익률
+            </div>
+          </div>
         </Paper>
         <Paper>
           {stocks.map((s) => {

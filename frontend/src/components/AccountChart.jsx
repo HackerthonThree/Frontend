@@ -12,7 +12,7 @@ const AccountChart = ({ data }) => {
           cx="50%"
           cy="50%"
           outerRadius={60}
-          innerRadius={40}
+          innerRadius={30}
           fill="#8884d8"
         >
           {data.map((entry, index) => (
