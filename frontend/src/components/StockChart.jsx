@@ -41,7 +41,9 @@ const StockChart = ({otherHistory}) => {
         sizeRange={[5, 15]}
         data={otherHistory}
       />
-      <LineSeries className="first-series" data={price} />
+      <LineSeries className="first-series" data={price}
+        style={{fill:'none'}}
+      />
     </XYPlot>
   );
 };
