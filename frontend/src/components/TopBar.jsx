@@ -55,7 +55,8 @@ const TopBar = ({ handleSideBarClick }) => {
 
   const [searchResult, setSearchResult] = useState("");
   const handleSearchEnter = (e, v) => {
-    const code=stockList.find(s=>(s.stockName==v)).stockCode;
+    if (v == null) return;
+    const code = stockList.find((s) => s.stockName == v).stockCode;
     navigate("/board/" + code);
   };
   const searchMenu = (
