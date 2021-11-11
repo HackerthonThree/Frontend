@@ -29,7 +29,6 @@ const Board = () => {
     const temp=result.data.map((d,i)=>{
       return {y:d.endCost,x: i,date:d.date};
     });
-    console.log(temp);
     setEndCosts(temp);
     setStockName(result.data[0].stock.stockName);
   };
@@ -71,10 +70,9 @@ const Board = () => {
     console.log(endCosts);
     result.data.map((d, i) => {
       const match = endCosts.find((e) => {
-        return e.date == d.transDate
+        return e.date == d.transDate;
       });
-      if(!match)
-      return;
+      if (!match) return;
       const dot = { x: match.x, y: d.amt, size: d.qty };
       if (d.transType) dots[0].push(dot);
       else dots[1].push(dot);
@@ -85,15 +83,20 @@ const Board = () => {
     fetchStockData();
   },[]);
   useEffect(() => {
+    setOtherHistory([]);
     fetchStockData();
     fetchCommentData();
-    const dots=fetchTransaction();
-    dots.then((r)=>{
+  }, [id]);
+
+  useEffect(() => {
+    console.log(endCosts);
+    const dots = fetchTransaction();
+    dots.then((r) => {
       console.log(r);
       setTransactionHistory(r);
     });
-  }, [id]);
-
+  }, [endCosts]);
+  
   const handleOtherHistory = (selectedId) => {
     //api로 종목코드하고 댓글사용자 아이디 보냄
     console.log(selectedId);
