@@ -12,7 +12,7 @@ import { useNavigate } from "react-router";
 const style = {
   backgroundColor: "#f55e61",
   color: "#FFFFFF",
-  width: "250px",
+  width: "320px",
   height: "50px",
 };
 
@@ -49,8 +49,11 @@ const LogIn = () => {
   return (
     <div className="LogIn">
       <div>
-        <div>
-          <TextField
+        <div className="pointStyle" style={{ padding: "50px" }}>
+          로 그 인
+        </div>
+        <div style={{ padding: "20px", width: "90%" }}>
+          <TextField style={{ width: "320px" }}
             label="ID"
             value={id}
             onChange={(e) => {
@@ -58,8 +61,8 @@ const LogIn = () => {
             }}
           ></TextField>
         </div>
-        <div>
-          <TextField
+        <div style={{ padding: "20px", width: "90%" }}>
+          <TextField style={{ width: "320px" }}
           type="password"
             label="Password"
             value={pw}
@@ -68,7 +71,7 @@ const LogIn = () => {
             }}
           ></TextField>
         </div>
-        <div>
+        <div style={{ padding: "20px", width: "90%" }}>
           <Button onClick={handleLogInClick} variant="contained" style={style}>
             로그인
           </Button>
