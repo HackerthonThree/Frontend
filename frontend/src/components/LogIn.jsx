@@ -5,13 +5,12 @@ import logoImg from "../resource/logo.png";
 import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 import LinkButton from "./LinkButton";
 import { TextField } from "@mui/material";
-
 const LogIn = () => {
   return (
-    <>
-      <TextField></TextField>
-      <TextField></TextField>
-    </>
+    <div>
+      <TextField label="ID"></TextField>
+      <TextField label="Password"></TextField>
+    </div>
   );
 };
 

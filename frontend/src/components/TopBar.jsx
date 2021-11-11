@@ -1,4 +1,4 @@
-import * as React from "react";
+import {useEffect} from "react";
 import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
@@ -8,15 +8,28 @@ import { useNavigate } from "react-router";
 import { useCallback, useState } from "react";
 import "./TopBar.scss";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Axios from 'axios';
 
-const stocks = ["삼성전자", "삼성전기", "애플", "삼성바이오로직스"];
-
-const getStockList=async ()=>{
-  let r=await fetch('http://3.35.205.126:8080/api/v1/comment/stock');
-  let data=await r.json();
-  console.log(getStockList);
-}
+const url="http://3.35.205.126:8080/api/v1/comment/stock";
 const TopBar = ({ handleSideBarClick }) => {
+  const [stockList, setStockList] = useState([]);
+  const [stockNameList,setStockNameList]=useState([]);
+  const fetchData = async () => {
+    const result = await Axios(url);
+    setStockList(result.data);
+    
+    const names=result.data.map((s)=>{
+      return s.stockName;
+    });
+    const sorted=names.sort();
+    console.log(sorted);
+    setStockNameList(sorted);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const [search, setSearch] = useState(false);
   const navigate = useNavigate();
   const handleOnClick = useCallback(() => navigate("/account"));
@@ -41,10 +54,10 @@ const TopBar = ({ handleSideBarClick }) => {
   );
 
   const [searchResult, setSearchResult] = useState("");
-  const handleSearchEnter=(e,v)=>{
-    console.log(v);
-    navigate('/board/'+v);
-  }
+  const handleSearchEnter = (e, v) => {
+    const code=stockList.find(s=>(s.stockName==v)).stockCode;
+    navigate("/board/" + code);
+  };
   const searchMenu = (
     <>
       <Button
@@ -61,7 +74,7 @@ const TopBar = ({ handleSideBarClick }) => {
         autoHighlight={true}
         size="small"
         disablePortal
-        options={stocks}
+        options={stockNameList}
         sx={{ width: 300 }}
         renderInput={(params) => <TextField {...params} label="종목 선택" />}
       />

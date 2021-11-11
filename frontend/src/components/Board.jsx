@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React,useEffect } from "react";
 import {
   useParams,
 } from "react-router-dom";
@@ -9,6 +9,7 @@ import { useState } from "react";
 import SideBar from "./SideBar";
 import "./Board.scss";
 import { Button, TextField } from "@mui/material";
+import  Axios  from "axios";
 const comments = [
   {
     name: "1",
@@ -42,7 +43,24 @@ const Board = () => {
   const { id } = useParams();
   const [open, setOpen] = useState(false);
   const [otherHistory, setOtherHistory] = useState([]);
-  console.log(id);
+
+  const url="http://3.35.205.126:8080/api/v1/portfolio//stock/price/"
+  const [endCosts, setEndCosts] = useState([]);
+  const [stockName,setStockName]=useState('');
+  const fetchData = async () => {
+    const result = await Axios(url+id);
+    const temp=result.data.map((d)=>{
+      return {endCost:d.endCost,date: d.date};
+    });
+    setEndCosts(temp);
+    console.log(result.data);
+    setStockName(result.data[0].stock.stockName);
+    console.log(temp);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleOtherHistory = (selectedId) => {
     //api로 종목코드하고 댓글사용자 아이디 보냄
@@ -131,7 +149,9 @@ const Board = () => {
         }}
         name="test"
       />
-      {id}
+      <b>
+      {stockName}
+      </b>
       <StockChart otherHistory={otherHistory} />
       <div>
         <div className="typeComment">
