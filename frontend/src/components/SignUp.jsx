@@ -105,7 +105,7 @@ const SignUp = () => {
             >
               중복확인
             </Button>
-            <div class="testBox" style={{ padding: "20px", width: "90%" }}>
+            <div className="testBox" style={{ padding: "20px", width: "90%" }}>
               · 한글 1~10자, 영문 대소문자 2~20자,
                 숫자를 사용할수 있습니다.
             </div>
@@ -133,7 +133,7 @@ const SignUp = () => {
           <Button style={style} variant="contained">
             중복확인
           </Button>
-            <div class="testBox" style={{ padding: "20px", width: "90%" }}>· 계좌 번호가 중복되거나 형식이 맞아야 합니다.</div>
+            <div className="testBox" style={{ padding: "20px", width: "90%" }}>· 계좌 번호가 중복되거나 형식이 맞아야 합니다.</div>
         </div>
         <Button onClick={handleSignUpClick} style={styles.confirm_btn_style} variant="contained">
         확인

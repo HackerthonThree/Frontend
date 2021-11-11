@@ -13,7 +13,7 @@ const CommentButton = ({id, name, words, yields: average, date, onSelect }) => {
           <AccountCircleIcon />
           {name}
           <Paper className="average">
-          평균매수가 {average}
+          평균매수가 {average/100}
           </Paper>
         </div>
         <Divider variant="fullWidth"/>

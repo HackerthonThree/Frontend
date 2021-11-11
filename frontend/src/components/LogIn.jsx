@@ -38,10 +38,9 @@ const LogIn = () => {
     })
       .then((res) => res.json())
       .then(function (response) {
-        if(response!=0){
-          navigate("/account");
-        }
-
+        if (response == 0)
+          alert("존재하지 않는 아이디이거나 비밀번호가 일치하지 않습니다.");
+        else navigate("/account");
       })
       .catch((error) => console.log("server not response..."));
   };

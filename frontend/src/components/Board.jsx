@@ -10,35 +10,6 @@ import SideBar from "./SideBar";
 import "./Board.scss";
 import { Button, TextField } from "@mui/material";
 import  Axios  from "axios";
-import { AtmTwoTone } from "@mui/icons-material";
-const comments = [
-  {
-    name: "1",
-    yield: 45.3,
-    words: "행님 수익률 대박~",
-    date: "2021/10/23",
-  },
-  { name: "2", yield: 36.6, words: "영차!영차!", date: "2021/10/14" },
-  {
-    name: "3",
-    yield: 12.1,
-    words: "수익은 항상 옳습니다!",
-    date: "2021/10/05",
-  },
-  {
-    name: "4",
-    yield: 45.3,
-    words: "행님 수익률 대박~",
-    date: "2021/10/23",
-  },
-  { name: "5", yield: 36.6, words: "영차!영차!", date: "2021/10/14" },
-  {
-    name: "6",
-    yield: 12.1,
-    words: "수익은 항상 옳습니다!",
-    date: "2021/10/05",
-  },
-];
 
 const Board = () => {
   const { id } = useParams();
@@ -97,18 +68,22 @@ const Board = () => {
       params: { userId: 1, stockCode: id },
     });
     const dots = [[], []];
-
+    console.log(endCosts);
     result.data.map((d, i) => {
       const match = endCosts.find((e) => {
         return e.date == d.transDate
       });
+      if(!match)
+      return;
       const dot = { x: match.x, y: d.amt, size: d.qty };
       if (d.transType) dots[0].push(dot);
       else dots[1].push(dot);
     });
     return dots;
   };
-
+  useEffect(()=>{
+    fetchStockData();
+  },[]);
   useEffect(() => {
     fetchStockData();
     fetchCommentData();
