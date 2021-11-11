@@ -6,12 +6,12 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import './StockButton.scss'
 const StockButton = ({ data }) => {
   const navigate = useNavigate();
-  const handleOnClick = useCallback(() => navigate("/board/" + data["name"]));
+  const handleOnClick = useCallback(() => navigate("/board/" + data["stockCode"]));
   return (
     <Paper elevation={2} className="StockButton">
     <div className="info">
       <div className="StockNameFont">{data["name"]}</div>
-      <div className="ProfitFont">▶ {data["yield"]}% /  {data["value"]}원</div>
+      <div className="ProfitFont">▶ {data["price"]}원 /  {data["qty"]}주</div>
 
     </div>
       <Button className="HistoryButton" onClick={handleOnClick}>

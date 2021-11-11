@@ -22,7 +22,6 @@ const TopBar = ({ handleSideBarClick }) => {
       return s.stockName;
     });
     const sorted=names.sort();
-    console.log(sorted);
     setStockNameList(sorted);
   };
 
@@ -35,7 +34,6 @@ const TopBar = ({ handleSideBarClick }) => {
   const handleOnClick = useCallback(() => navigate("/account"));
 
   const onSearchClick = () => {
-    console.log(search);
     setSearch(true);
   };
 

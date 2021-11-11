@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import "./CommentButton.scss";
-const CommentButton = ({ name, words, yields: average, date, onSelect }) => {
+const CommentButton = ({id, name, words, yields: average, date, onSelect }) => {
   return (
     <Paper elevation={2} className="CommentButton">
       <div className="texts">
@@ -19,7 +19,7 @@ const CommentButton = ({ name, words, yields: average, date, onSelect }) => {
         <Divider variant="fullWidth"/>
         <div>{words}</div>
       </div>
-      <Button className="HistoryButton" onClick={() => onSelect(name)}>
+      <Button className="HistoryButton" onClick={() => onSelect(id)}>
         <ArrowForwardIosIcon style={{ fill: "#f55e61" }} fontSize="large" />
       </Button>
     </Paper>
