@@ -21,16 +21,9 @@ const transactionHistory = [
   ],
 ];
 
-const price = [
-  { x: 1, y: 6 },
-  { x: 2, y: 18 },
-  { x: 3, y: 6 },
-  { x: 4, y: 13 },
-  { x: 5, y: 2 },
-];
 
 const sizeRange = [4, 10];
-const StockChart = ({ otherHistory }) => {
+const StockChart = ({ price,otherHistory }) => {
   return (
     <XYPlot className="StockChart" width={350} height={200}>
       <VerticalGridLines />

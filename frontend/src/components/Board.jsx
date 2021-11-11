@@ -44,23 +44,21 @@ const Board = () => {
   const [open, setOpen] = useState(false);
   const [otherHistory, setOtherHistory] = useState([]);
 
-  const url="http://3.35.205.126:8080/api/v1/portfolio//stock/price/"
+  const url="http://3.35.205.126:8080/api/v1/portfolio/stock/price/"
   const [endCosts, setEndCosts] = useState([]);
   const [stockName,setStockName]=useState('');
   const fetchData = async () => {
     const result = await Axios(url+id);
-    const temp=result.data.map((d)=>{
-      return {endCost:d.endCost,date: d.date};
+    const temp=result.data.map((d,i)=>{
+      return {y:d.endCost,x: i};
     });
     setEndCosts(temp);
-    console.log(result.data);
     setStockName(result.data[0].stock.stockName);
-    console.log(temp);
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [id]);
 
   const handleOtherHistory = (selectedId) => {
     //api로 종목코드하고 댓글사용자 아이디 보냄
@@ -152,7 +150,7 @@ const Board = () => {
       <b>
       {stockName}
       </b>
-      <StockChart otherHistory={otherHistory} />
+      <StockChart price={endCosts} otherHistory={otherHistory} />
       <div>
         <div className="typeComment">
           <TextField
