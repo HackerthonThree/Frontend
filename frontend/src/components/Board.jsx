@@ -1,7 +1,5 @@
-import { React,useEffect } from "react";
-import {
-  useParams,
-} from "react-router-dom";
+import { React, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import StockChart from "./StockChart";
 import TopBar from "./TopBar";
 import CommentButton from "./CommentButton";
@@ -9,25 +7,25 @@ import { useState } from "react";
 import SideBar from "./SideBar";
 import "./Board.scss";
 import { Button, TextField } from "@mui/material";
-import  Axios  from "axios";
+import Axios from "axios";
 
 const Board = () => {
   const { id } = useParams();
   const [open, setOpen] = useState(false);
-  const [myComment, setMyComment] = useState('');
+  const [myComment, setMyComment] = useState("");
   const [otherHistory, setOtherHistory] = useState([]);
   const [transactionHistory, setTransactionHistory] = useState([]);
   const [comments, setComments] = useState([]);
 
-  const priceUrl="http://3.35.205.126:8080/api/v1/portfolio/stock/price/"
-  const commentUrl="http://3.35.205.126:8080/api/v1/comment/";
+  const priceUrl = "http://3.35.205.126:8080/api/v1/portfolio/stock/price/";
+  const commentUrl = "http://3.35.205.126:8080/api/v1/comment/";
   const [endCosts, setEndCosts] = useState([]);
-  const [stockName,setStockName]=useState('');
+  const [stockName, setStockName] = useState("");
 
   const fetchStockData = async () => {
-    const result = await Axios(priceUrl+id);
-    const temp=result.data.map((d,i)=>{
-      return {y:d.endCost,x: i,date:d.date};
+    const result = await Axios(priceUrl + id);
+    const temp = result.data.map((d, i) => {
+      return { y: d.endCost, x: i, date: d.date };
     });
     setEndCosts(temp);
     setStockName(result.data[0].stock.stockName);
@@ -45,14 +43,14 @@ const Board = () => {
     console.log(result.data);
     const dots = [[], []];
     console.log(endCosts);
-    const test1=result.data[0].transDate;
-    const test2=endCosts[0].date;
+    const test1 = result.data[0].transDate;
+    const test2 = endCosts[0].date;
     // console.log(test1);
     // console.log(test2);
-    console.log(test1==test2);
+    console.log(test1 == test2);
     result.data.map((d, i) => {
       const match = endCosts.find((e) => {
-        return e.date == d.transDate
+        return e.date == d.transDate;
       });
       const dot = { x: match.x, y: d.amt, size: d.qty };
       if (d.transType) dots[0].push(dot);
@@ -79,9 +77,9 @@ const Board = () => {
     });
     return dots;
   };
-  useEffect(()=>{
+  useEffect(() => {
     fetchStockData();
-  },[]);
+  }, []);
   useEffect(() => {
     setOtherHistory([]);
     fetchStockData();
@@ -96,7 +94,7 @@ const Board = () => {
       setTransactionHistory(r);
     });
   }, [endCosts]);
-  
+
   const handleOtherHistory = (selectedId) => {
     //api로 종목코드하고 댓글사용자 아이디 보냄
     console.log(selectedId);
@@ -146,12 +144,16 @@ const Board = () => {
         }}
         name="가즈아"
       />
-      <b>{stockName}</b>
-      <StockChart
-        price={endCosts}
-        transactionHistory={transactionHistory}
-        otherHistory={otherHistory}
-      />
+      <div>
+        <b>{stockName}</b>
+      </div>
+      <div>
+        <StockChart
+          price={endCosts}
+          transactionHistory={transactionHistory}
+          otherHistory={otherHistory}
+        />
+      </div>
       <div>
         <div className="typeComment">
           <TextField
