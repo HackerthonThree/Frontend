@@ -11,6 +11,11 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const stocks = ["삼성전자", "삼성전기", "애플", "삼성바이오로직스"];
 
+const getStockList=async ()=>{
+  let r=await fetch('http://3.35.205.126:8080/api/v1/comment/stock');
+  let data=await r.json();
+  console.log(getStockList);
+}
 const TopBar = ({ handleSideBarClick }) => {
   const [search, setSearch] = useState(false);
   const navigate = useNavigate();

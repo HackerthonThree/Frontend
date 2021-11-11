@@ -73,11 +73,11 @@ const sortedStocks=stocks.sort((a,b)=>{
             </div>
           </div>
         </Paper>
-        <Paper className="Stocks">
+        <div className="Stocks">
           {stocks.map((s,i) => {
             return <StockButton key={i} data={s} />;
           })}
-        </Paper>
+        </div>
       </div>
     </div>
   );

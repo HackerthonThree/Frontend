@@ -7,7 +7,6 @@ import LogIn from './LogIn'
 import SignUp from './SignUp'
 import Account from './Account'
 import Board from './Board'
-
 function App(){
     return (
       <BrowserRouter className="App">

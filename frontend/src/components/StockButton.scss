@@ -1,0 +1,12 @@
+.StockButton{
+    display: flex;
+    position:relative;
+    margin:15px 0;
+    padding:10px;
+    .HistoryButton{
+        position: absolute;
+        right:3px;
+        top:50%;
+        transform:translateY(-50%);
+    }
+}

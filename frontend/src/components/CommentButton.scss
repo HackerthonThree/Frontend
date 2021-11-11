@@ -4,6 +4,19 @@
     margin:15px;
     text-align: left;
     padding:10px;
+    .texts{
+        width: 80%;
+    }
+    .info{
+        display: flex;
+        .average{
+            padding:5px;
+            background-color: #d5d5d5;
+            color:#3a3a3a;
+            font-size: small;
+            margin:5px 10px;
+        }
+    }
     .MuiButton-root{
         position:absolute;
         right:3px;

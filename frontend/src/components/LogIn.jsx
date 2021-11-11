@@ -4,11 +4,13 @@ import Button from "@mui/material/Button";
 import logoImg from "../resource/logo.png";
 import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 import LinkButton from "./LinkButton";
+import { TextField } from "@mui/material";
 
 const LogIn = () => {
   return (
     <>
-      <Button>로그인!!!</Button>
+      <TextField></TextField>
+      <TextField></TextField>
     </>
   );
 };
