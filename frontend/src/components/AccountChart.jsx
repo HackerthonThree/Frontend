@@ -1,6 +1,6 @@
 import { Paper } from "@mui/material";
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
-import './AccountChart.scss'
+//import './AccountChart.scss'
 const COLORS = ["#8776E8", "#5FC8E8", "#48E874", "#E8D554",'#C3E36B','#B449E3','#E3903D'];
 const AccountChart = ({ data }) => {
   return (

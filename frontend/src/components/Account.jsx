@@ -14,6 +14,7 @@ import "./Account.scss";
 import Axios from "axios";
 
 const Account = () => {
+  const [pieKey, setPieKey] = useState(0);
   const [open, setOpen] = useState(false);
   const [stockList, setStockList] = useState([]);
   const [stockNameList, setStockNameList] = useState([]);
@@ -55,6 +56,7 @@ const Account = () => {
       };
     });
     setAccountInfo(stocks);
+    setPieKey(pieKey+1);
   };
 
   useEffect(() => {
@@ -89,9 +91,9 @@ const Account = () => {
       />
       <div className="AccountInfo">
         <Paper className="AccountChart">
-          <AccountChart className="circleChart" data={sortedStocks} />
+          <AccountChart key={pieKey} data={sortedStocks} />
           <div className="fonts">
-            <div className="fontWrap">【 {nickName} 】</div>
+            <div className="fontWrap">【 {nickName} 님 】</div>
             <div className="fontWrap">총자산</div>
             <div className="fontWrap">{sum}원</div>
           </div>
