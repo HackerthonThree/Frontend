@@ -3,10 +3,19 @@
     position:relative;
     margin:15px 0;
     padding:10px;
+
     .HistoryButton{
         position: absolute;
         right:3px;
         top:50%;
         transform:translateY(-50%);
+    }
+    .StockNameFont{
+        font-weight: bolder;
+        font-size: xx-large;
+    }
+
+    .ProfitFont{
+        font-size: x-large;
     }
 }

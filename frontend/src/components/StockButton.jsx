@@ -10,10 +10,9 @@ const StockButton = ({ data }) => {
   return (
     <Paper elevation={2} className="StockButton">
     <div className="info">
+      <div className="StockNameFont">{data["name"]}</div>
+      <div className="ProfitFont">▶ {data["yield"]}% /  {data["value"]}원</div>
 
-      <div>{data["name"]}</div>
-      <div>{data["yield"]}</div>
-      <div>{data["value"]}</div>
     </div>
       <Button className="HistoryButton" onClick={handleOnClick}>
         <ArrowForwardIosIcon style={{ fill: "#f55e61" }} fontSize="large" />

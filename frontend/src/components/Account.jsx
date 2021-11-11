@@ -62,14 +62,16 @@ const sortedStocks=stocks.sort((a,b)=>{
       />
       <div className="AccountInfo">
         <Paper className="AccountChart">
-          <div>{yieldValue}%</div>
-          <AccountChart data={sortedStocks} />
+          <AccountChart className="circleChart" data={sortedStocks} />
           <div className="fonts">
             <div className="fontWrap">
-            총 자산
+              【 가즈아님 】
             </div>
             <div className="fontWrap">
-            수익률
+              총자산
+            </div>
+            <div className="fontWrap">
+              2,199,225원
             </div>
           </div>
         </Paper>
