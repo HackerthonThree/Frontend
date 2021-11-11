@@ -79,21 +79,21 @@ const SignUp = () => {
   return (
     <div className="SignUp">
       <FormControl >
-          <div style={{ padding: "20px", width: "90%" }}>
-            <TextField style={{padding:"0px 20px 0px 0px"}} label="ID" variant="standard"
+          <div className="loginInfo" style={{ padding: "20px", width: "90%" }}>
+            <TextField style={{ width: "320px" }} label="ID" variant="standard"
             value={id}
               onChange={(e)=>{setId(e.target.value)}}
             />
-            <TextField style={{padding:"0px 20px 0px 0px"}} label="Password" variant="standard"
+            <TextField style={{ width: "320px" }} label="Password" variant="standard"
             value={pw}
             type="password"
               onChange={(e)=>{setPw(e.target.value)}}
             />
-            <TextField style={{padding:"0px 20px 0px 0px"}} label="Password Verification" variant="standard"
+            <TextField style={{ width: "320px" }} label="Password Verification" variant="standard"
             value={pw2}
             type="password"
               onChange={(e)=>{setPw2(e.target.value)}}
-            />
+            /></div><div style={{ padding: "20px", width: "90%" }}>
             <TextField style={{padding:"0px 20px 0px 0px"}} label="닉네임" variant="standard"
             value={name}
               onChange={(e)=>{setName(e.target.value)}}
