@@ -47,7 +47,7 @@ const SignUp = () => {
         >
           중복확인
         </Button>
-        <div style={{ textAlign: "center", width: "80%" }}>
+        <div style={{ padding: "20px", width: "90%" }}>
           · 한글 1~10자, 영문 대소문자 2~20자, 숫자를 사용할수 있습니다.
         </div>
       </FormControl>
@@ -73,8 +73,8 @@ const SignUp = () => {
       <Button style={style} variant="contained">
         중복확인
       </Button>
-      <div>· 계좌 번호가 중복되거나 형식이 맞아야 합니다.</div>
-      <Button style={style} variant="contained">
+      <div style={{ padding: "20px", width: "90%" }}>· 계좌 번호가 중복되거나 형식이 맞아야 합니다.</div>
+      <Button style={style_confirm}  variant="contained">
         확인
       </Button>
     </div>
