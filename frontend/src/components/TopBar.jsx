@@ -21,7 +21,7 @@ const TopBar = ({ handleSideBarClick }) => {
   };
 
   const normalMenu = (
-    <div className="TopBar" elevation={2}>
+    <>
       <Button>
         <MenuIcon style={{ fill: "white" }} onClick={handleSideBarClick} />
       </Button>
@@ -31,26 +31,30 @@ const TopBar = ({ handleSideBarClick }) => {
       <Button onClick={onSearchClick}>
         <SearchIcon style={{ fill: "white" }} />
       </Button>
-    </div>
+    </>
   );
 
   const searchMenu = (
-    <div className="TopBar" elevation={2}>
+    <>
       <Button
-      onClick={()=>{setSearch(false)}}>
-        <ArrowBackIcon style={{fill:"white"}} />
+        onClick={() => {
+          setSearch(false);
+        }}
+      >
+        <ArrowBackIcon style={{ fill: "white" }} />
       </Button>
       <Autocomplete
+        size="small"
         disablePortal
         id="combo-box-demo"
         options={stocks}
         sx={{ width: 300 }}
         renderInput={(params) => <TextField {...params} label="종목 선택" />}
       />
-    </div>
+    </>
   );
 
-  return <div>{search ? searchMenu : normalMenu}</div>;
+  return <div className="TopBar">{search ? searchMenu : normalMenu}</div>;
 };
 
 export default TopBar;

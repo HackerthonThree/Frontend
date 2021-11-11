@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import './CommentButton.scss'
-const CommentButton = ({ name, words, yields, date, onSelect }) => {
+const CommentButton = ({ name, words, yields: average, date, onSelect }) => {
   return (
     <Paper elevation={2} className="CommentButton">
         <AccountCircleIcon />
         <div>
           <div>{name}</div>
-          <div>{yields}</div>
+          <div>{average}</div>
           <div>{words}</div>
         </div>
         <Button 
