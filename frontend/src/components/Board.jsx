@@ -75,12 +75,16 @@ const Board = () => {
     console.log(result.data);
     const dots = [[], []];
     console.log(endCosts);
+    const test1=result.data[0].transDate;
+    const test2=endCosts[0].date;
+    // console.log(test1);
+    // console.log(test2);
+    console.log(test1==test2);
     result.data.map((d, i) => {
       const match = endCosts.find((e) => {
-        return e.date == d.transdate
+        return e.date == d.transDate
       });
-      console.log(match);
-      const dot = { x: i, y: d.amt, size: d.qty };
+      const dot = { x: match.x, y: d.amt, size: d.qty };
       if (d.transType) dots[0].push(dot);
       else dots[1].push(dot);
     });
@@ -93,8 +97,12 @@ const Board = () => {
       params: { userId: 1, stockCode: id },
     });
     const dots = [[], []];
+
     result.data.map((d, i) => {
-      const dot = { x: i, y: d.amt, size: d.qty };
+      const match = endCosts.find((e) => {
+        return e.date == d.transDate
+      });
+      const dot = { x: match.x, y: d.amt, size: d.qty };
       if (d.transType) dots[0].push(dot);
       else dots[1].push(dot);
     });
@@ -109,7 +117,6 @@ const Board = () => {
       console.log(r);
       setTransactionHistory(r);
     });
-    setTransactionHistory(dots);
   }, [id]);
 
   const handleOtherHistory = (selectedId) => {
@@ -159,7 +166,7 @@ const Board = () => {
         toggleDrawer={() => {
           setOpen(false);
         }}
-        name="test"
+        name="가즈아"
       />
       <b>{stockName}</b>
       <StockChart

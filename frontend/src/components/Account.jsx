@@ -82,6 +82,7 @@ const Account = () => {
       />
       <SideBar
         open={open}
+        name="가즈아"
         toggleDrawer={() => {
           setOpen(false);
         }}

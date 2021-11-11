@@ -17,8 +17,7 @@ const StockChart = ({ price,transactionHistory,otherHistory }) => {
     <XYPlot className="StockChart" width={350} height={200}>
       <VerticalGridLines />
       <HorizontalGridLines />
-      <XAxis />
-      <YAxis />
+      <YAxis className="yAxis"/>
       <MarkSeries
         opacity={0.55}
         color="red"
