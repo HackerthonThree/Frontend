@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useNavigate} from "react";
 import ReactDOM from "react-dom";
 import Button from "@mui/material/Button";
 import {
@@ -31,8 +31,12 @@ const styles = {
 }
 
 const SignUp = () => {
-  const [brokerage, setBrokerage] = useState("");
   const [accountNum, setAccountNum] = useState("");
+  const [brokerage, setBrokerage] = useState("");
+  const [name, setName] = useState('');
+  const [id,setId]=useState('');
+  const [pw,setPw]=useState('');
+  const [pw2,setPw2]=useState('');
   const brokerages = [
     { name: "KB증권" },
     { name: "NH증권" },
@@ -41,16 +45,56 @@ const SignUp = () => {
     { name: "신영증권" },
   ];
 
+  const url = "http://3.35.205.126:8080/api/v1/auth/login";
+
+  const handleSignUpClick = () => {
+    /*
+    console.log("click");
+    const sendData = {
+      id: id,
+      password: pw,
+    };
+    const jsoned = JSON.stringify(sendData);
+    console.log(jsoned);
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: jsoned,
+    })
+      .then((res) => res.json())
+      .then(function (response) {
+        if(response!=0){
+          navigate("/account");
+        }
+
+      })
+      .catch((error) => console.log("server not response..."));
+      */
+  };
+
   const handleNameDuplicateCheck = () => {
     console.log(name);
   };
 
-  const [name, setName] = useState('');
   return (
     <div className="SignUp">
       <FormControl >
           <div style={{ padding: "20px", width: "90%" }}>
-            <TextField style={{padding:"0px 20px 0px 0px"}} id="outlined-basic" label="닉네임" variant="standard"
+            <TextField style={{padding:"0px 20px 0px 0px"}} label="ID" variant="standard"
+            value={id}
+              onChange={(e)=>{setId(e.target.value)}}
+            />
+            <TextField style={{padding:"0px 20px 0px 0px"}} label="Password" variant="standard"
+            value={pw}
+            type="password"
+              onChange={(e)=>{setPw(e.target.value)}}
+            />
+            <TextField style={{padding:"0px 20px 0px 0px"}} label="Password Verification" variant="standard"
+            value={pw2}
+            type="password"
+              onChange={(e)=>{setPw2(e.target.value)}}
+            />
+            <TextField style={{padding:"0px 20px 0px 0px"}} label="닉네임" variant="standard"
             value={name}
               onChange={(e)=>{setName(e.target.value)}}
             />
@@ -91,7 +135,7 @@ const SignUp = () => {
           </Button>
             <div class="testBox" style={{ padding: "20px", width: "90%" }}>· 계좌 번호가 중복되거나 형식이 맞아야 합니다.</div>
         </div>
-        <Button style={styles.confirm_btn_style} variant="contained">
+        <Button onClick={handleSignUpClick} style={styles.confirm_btn_style} variant="contained">
         확인
         </Button>
     </div>
