@@ -14,14 +14,39 @@ import "./Account.scss";
 const stocks = [
   { name: "삼성전자", value: 400, yield: -23.5 },
   { name: "삼성바이오로직스", value: 300, yield: 46.6 },
-  { name: "애플", value: 300, yield: 46.2 },
+  { name: "애플", value: 350, yield: 46.2 },
+  { name: "가로이", value: 120, yield: 46.2 },
+  { name: "미노이", value: 80, yield: 46.2 },
+  { name: "삼성전자", value: 400, yield: -23.5 },
+  { name: "삼성바이오로직스", value: 300, yield: 46.6 },
+  { name: "애플", value: 350, yield: 46.2 },
+  { name: "가로이", value: 120, yield: 46.2 },
+  { name: "미노이", value: 80, yield: 46.2 },
+  { name: "삼성전자", value: 400, yield: -23.5 },
+  { name: "삼성바이오로직스", value: 300, yield: 46.6 },
+  { name: "애플", value: 350, yield: 46.2 },
+  { name: "가로이", value: 120, yield: 46.2 },
+  { name: "미노이", value: 80, yield: 46.2 },
+  { name: "미노이", value: 80, yield: 46.2 },
+  { name: "삼성전자", value: 400, yield: -23.5 },
+  { name: "삼성바이오로직스", value: 300, yield: 46.6 },
+  { name: "애플", value: 350, yield: 46.2 },
+  { name: "가로이", value: 120, yield: 46.2 },
+  { name: "미노이", value: 80, yield: 46.2 },
+  { name: "삼성전자", value: 400, yield: -23.5 },
+  { name: "삼성바이오로직스", value: 300, yield: 46.6 },
+  { name: "애플", value: 350, yield: 46.2 },
+  { name: "가로이", value: 120, yield: 46.2 },
+  { name: "미노이", value: 80, yield: 46.2 },
 ];
 
 const yieldValue = 50;
 
 const Account = () => {
   const [open, setOpen] = useState(false);
-
+const sortedStocks=stocks.sort((a,b)=>{
+  return b.value-a.value;
+});
   return (
     <div className="Account">
       <TopBar
@@ -38,7 +63,7 @@ const Account = () => {
       <div className="AccountInfo">
         <Paper className="AccountChart">
           <div>{yieldValue}%</div>
-          <AccountChart data={stocks} />
+          <AccountChart data={sortedStocks} />
           <div className="fonts">
             <div className="fontWrap">
             총 자산
@@ -48,9 +73,9 @@ const Account = () => {
             </div>
           </div>
         </Paper>
-        <Paper>
-          {stocks.map((s) => {
-            return <StockButton key={s["name"]} data={s} />;
+        <Paper className="Stocks">
+          {stocks.map((s,i) => {
+            return <StockButton key={i} data={s} />;
           })}
         </Paper>
       </div>

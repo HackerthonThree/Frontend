@@ -1,0 +1,16 @@
+.Board{
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    display: t;
+    .typeComment{
+        text-align: center;
+        .commentTextField{
+            width:400px
+        }
+    }
+    .comments{
+        overflow: auto;
+        max-height: 400px;
+    }
+}

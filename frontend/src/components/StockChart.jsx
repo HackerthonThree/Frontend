@@ -5,45 +5,74 @@ import {
   HorizontalGridLines,
   XAxis,
   YAxis,
-  LineSeries
+  LineSeries,
+  GradientDefs,
 } from "react-vis";
-
+import "./StockChart.scss"
 const transactionHistory = [
-  { x: 1, y: 10, size: 30 },
-  { x: 2, y: 12, size: 10 },
-  { x: 3, y: 5, size: 1 },
-  { x: 4, y: 15, size: 12 },
-  { x: 5, y: 7, size: 4 },
+  [
+    { x: 1, y: 10, size: 50 },
+    { x: 2, y: 12, size: 20 },
+    { x: 3, y: 5, size: 15 },
+  ],
+  [
+    { x: 4, y: 15, size: 1 },
+    { x: 5, y: 7, size: 3 },
+  ],
 ];
 
 const price = [
-  { x: 1, y: 6},
-  { x: 2, y: 18},
-  { x: 3, y: 6},
-  { x: 4, y: 13},
-  { x: 5, y: 2},
+  { x: 1, y: 6 },
+  { x: 2, y: 18 },
+  { x: 3, y: 6 },
+  { x: 4, y: 13 },
+  { x: 5, y: 2 },
 ];
 
-const StockChart = ({otherHistory}) => {
+const sizeRange = [4, 10];
+const StockChart = ({ otherHistory }) => {
   return (
-    <XYPlot width={300} height={300}>
+    <XYPlot className="StockChart" width={350} height={200}>
       <VerticalGridLines />
       <HorizontalGridLines />
       <XAxis />
       <YAxis />
       <MarkSeries
-        className="mark-series-example"
-        sizeRange={[5, 15]}
-        data={transactionHistory}
+        opacity={0.55}
+        color="red"
+        sizeRange={sizeRange}
+        data={transactionHistory[0]}
       />
       <MarkSeries
-        className="mark-series-example"
-        sizeRange={[5, 15]}
-        data={otherHistory}
+        opacity={0.55}
+        color="blue"
+        sizeRange={sizeRange}
+        data={transactionHistory[1]}
       />
-      <LineSeries className="first-series" data={price}
-        style={{fill:'none'}}
+      <MarkSeries
+        opacity={0.55}
+        strokeWidth={3}
+        color="red"
+        fill="white"
+        sizeRange={sizeRange}
+        data={otherHistory[0]}
       />
+      <MarkSeries
+        opacity={0.55}
+        strokeWidth={3}
+        color="blue"
+        fill="white"
+        sizeRange={sizeRange}
+        data={otherHistory[1]}
+      />
+
+        <LineSeries
+          className="first-series"
+          color="#f55e61"
+          strokeWidth={3}
+          data={price}
+          style={{ fill: "none" }}
+        />
     </XYPlot>
   );
 };

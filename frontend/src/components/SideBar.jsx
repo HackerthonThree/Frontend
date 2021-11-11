@@ -15,8 +15,8 @@ const SideBar = ({ open, toggleDrawer, name }) => {
         onKeyDown={toggleDrawer}
       >
         <AccountCircleIcon fontSize="large" />
+        {name}
         <List>
-          {name}
           <LinkButton title="로그아웃" link="/"/>
         </List>
       </Box>
