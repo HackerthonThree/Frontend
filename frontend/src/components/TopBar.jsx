@@ -15,6 +15,7 @@ const TopBar = ({ handleSideBarClick }) => {
   const [search, setSearch] = useState(false);
   const navigate = useNavigate();
   const handleOnClick = useCallback(() => navigate("/account"));
+
   const onSearchClick = () => {
     console.log(search);
     setSearch(true);
@@ -34,6 +35,11 @@ const TopBar = ({ handleSideBarClick }) => {
     </>
   );
 
+  const [searchResult, setSearchResult] = useState("");
+  const handleSearchEnter=(e,v)=>{
+    console.log(v);
+    navigate('/board/'+v);
+  }
   const searchMenu = (
     <>
       <Button
@@ -44,9 +50,12 @@ const TopBar = ({ handleSideBarClick }) => {
         <ArrowBackIcon style={{ fill: "white" }} />
       </Button>
       <Autocomplete
+        value={searchResult}
+        onChange={handleSearchEnter}
+        selectOnFocus={true}
+        autoHighlight={true}
         size="small"
         disablePortal
-        id="combo-box-demo"
         options={stocks}
         sx={{ width: 300 }}
         renderInput={(params) => <TextField {...params} label="종목 선택" />}
